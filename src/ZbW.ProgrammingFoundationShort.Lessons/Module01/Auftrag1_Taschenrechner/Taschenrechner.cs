@@ -46,10 +46,21 @@ public static class Taschenrechner
 
     // TODO 5: Ergebnis ausgeben: $"Ergebnis: {result:F2}"
     Console.WriteLine("Bitte erste Zahl eingeben");
-    int zahl1 = Convert.ToInt32(Console.ReadLine());
+    int zahl1 = Convert.ToInt32(Console.ReadLine()?? "");
     Console.WriteLine("Bitte zweite Zahl eingeben");
-    int zahl2 = Convert.ToInt32(Console.ReadLine());
+    int zahl2 = Convert.ToInt32(Console.ReadLine()?? "");
     Console.WriteLine("Bitte wähle einen dieser +, -, *, /, Operatoren aus");
-    char operation = Convert.ToChar(Console.ReadLine());
+    char operation = Convert.ToChar(Console.ReadLine()?? "");
+
+    switch (operation)
+      {
+      case '+':
+        Console.WriteLine($"Ergebnis: {zahl1 + zahl2:F2}");
+        break;
+
+      case '-':
+        Console.WriteLine($"Ergebnis: {zahl1 - zahl2:F2}");
+        break;
+    }
   }
 }
