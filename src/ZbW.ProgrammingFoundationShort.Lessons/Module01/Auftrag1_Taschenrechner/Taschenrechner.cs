@@ -45,5 +45,7 @@ public static class Taschenrechner
     //         Unbekannte Operation → Meldung ausgeben
 
     // TODO 5: Ergebnis ausgeben: $"Ergebnis: {result:F2}"
+    Console.WriteLine("Bitte erste Zahl");
+    Console.ReadLine();
   }
 }
