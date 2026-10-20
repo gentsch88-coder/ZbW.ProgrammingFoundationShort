@@ -49,5 +49,7 @@ public static class Taschenrechner
     int zahl1 = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("Bitte zweite Zahl eingeben");
     int zahl2 = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Bitte wähle einen dieser +, -, *, /, Operatoren aus");
+    char operation = Convert.ToChar(Console.ReadLine());
   }
 }
