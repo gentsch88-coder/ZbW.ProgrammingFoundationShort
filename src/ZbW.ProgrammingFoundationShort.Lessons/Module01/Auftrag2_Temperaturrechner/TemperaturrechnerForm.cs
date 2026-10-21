@@ -16,8 +16,13 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module01.Auftrag2_Temperaturrec
 
 public partial class TemperaturrechnerForm : Form
 {
-  // TODO 1: Konstante für den absoluten Nullpunkt definieren
-  //         private const double AbsoluteZero = -273.15;
+  public const double absoluteZero = -273.15;
+  public const double absoluteZeroFahrenheit = -459.67;
+  public double celsius;
+  public double fahrenheit;
+  public double resultFahrenheit;
+  public double resultCelsius;
+  
 
   public TemperaturrechnerForm()
   {
@@ -27,20 +32,38 @@ public partial class TemperaturrechnerForm : Form
   // ── Celsius → Fahrenheit ────────────────────────────────────
   private void CmdCelsiusToFahrenheit_Click(object sender, EventArgs e)
   {
-    // TODO 2: Wert aus TxtCelsius lesen (double.TryParse)
-    //         Bei ungültiger Eingabe: MessageBox anzeigen und return
-
-    // TODO 3: Prüfen ob Wert < AbsoluteZero
-    //         → MessageBox mit Warnung, aber weiter rechnen
-
-    // TODO 4: Formel anwenden: fahrenheit = celsius * 9.0 / 5.0 + 32
-
-    // TODO 5: Ergebnis in TxtFahrenheit anzeigen ($"{fahrenheit:F2}")
+    if (double.TryParse(TxtCelsius.Text, out double celsiusTemp))
+    {
+      if (celsiusTemp < absoluteZero)
+      {
+        MessageBox.Show("Wert ist unter dem absoluten Nullpunkt");
+        resultFahrenheit = celsiusTemp * 9.0 / 5.0 + 32;
+        TxtFahrenheit.Text = $"{resultFahrenheit:F2}";
+      }
+      else
+      {
+        resultFahrenheit = celsiusTemp * 9.0 / 5.0 + 32;
+        TxtFahrenheit.Text = $"{resultFahrenheit:F2}";
+      }
+    }
   }
-
   // ── Fahrenheit → Celsius ────────────────────────────────────
   private void CmdFahrenheitToCelsius_Click(object sender, EventArgs e)
   {
+    if(double.TryParse(TxtFahrenheit.Text, out double fahrenheitTemp))
+    {
+      if (fahrenheitTemp < absoluteZeroFahrenheit )
+      {
+        MessageBox.Show("Wert ist unter dem absoluten Nullpunkt");
+        resultCelsius = (fahrenheitTemp - 32) * 5.0 / 9.0;
+        TxtCelsius.Text = $"{resultCelsius:F2}";
+      }
+      else
+      {
+        resultCelsius = (fahrenheitTemp - 32) * 5.0 / 9.0;
+        TxtCelsius.Text = $"{resultCelsius:F2}";
+      }
+    }
     // TODO 6: Wert aus TxtFahrenheit lesen (double.TryParse)
     //         Bei ungültiger Eingabe: MessageBox anzeigen und return
 
