@@ -24,43 +24,81 @@ public static class Taschenrechner
   /// </summary>
   public static void Start()
   {
-    // TODO 1: Erste Zahl einlesen und prüfen
-    //         Console.Write("Erste Zahl: ");
-    //         if (!double.TryParse(Console.ReadLine() ?? "", out double zahl1))
-    //         {
-    //           Console.WriteLine("Ungültige Zahl.");
-    //           return;
-    //         }
+    double zahl1 = Input1();
+    char operation = InputOperation();
+    double zahl2 = Input2();
+    Operation(zahl1, zahl2, operation);
 
-    // TODO 2: Zweite Zahl einlesen (gleiche Technik wie TODO 1)
 
-    // TODO 3: Operation einlesen (+, -, *, /)
-    //         string operation = Console.ReadLine() ?? "";
-
-    // TODO 4: Berechnen mit if / else if
-    //         if (operation == "+") { result = zahl1 + zahl2; }
-    //         else if (operation == "-") { ... }
-    //         ...
-    //         Achtung: Bei "/" zuerst prüfen, ob zahl2 == 0 ist!
-    //         Unbekannte Operation → Meldung ausgeben
-
-    // TODO 5: Ergebnis ausgeben: $"Ergebnis: {result:F2}"
-    Console.WriteLine("Bitte erste Zahl eingeben");
-    int zahl1 = Convert.ToInt32(Console.ReadLine()?? "");
-    Console.WriteLine("Bitte zweite Zahl eingeben");
-    int zahl2 = Convert.ToInt32(Console.ReadLine()?? "");
-    Console.WriteLine("Bitte wähle einen dieser +, -, *, /, Operatoren aus");
-    char operation = Convert.ToChar(Console.ReadLine()?? "");
-
-    switch (operation)
+  }
+  public static double Input1()
+  {
+    Console.WriteLine("Bitte gebe deine erste Zahl ein: ");
+    if (!double.TryParse(Console.ReadLine() ?? "", out double zahl1))
       {
-      case '+':
-        Console.WriteLine($"Ergebnis: {zahl1 + zahl2:F2}");
-        break;
+       Console.WriteLine("Ungültige Zahl.");    
+      }
+    return zahl1;
+  }
 
-      case '-':
-        Console.WriteLine($"Ergebnis: {zahl1 - zahl2:F2}");
-        break;
+  public static double Input2()
+  {
+    Console.WriteLine("Bitte gebe deine zweite Zahl ein: ");
+    if (!double.TryParse(Console.ReadLine() ?? "", out double zahl2))
+    {
+      Console.WriteLine("Ungültige Zahl.");
     }
+    return zahl2;
+  }
+
+  public static char InputOperation()
+  {
+    Console.WriteLine("Bitte gebe eine dieser Operationen ein +, -, *, /, : ");
+    if (!char.TryParse(Console.ReadLine() ?? "", out char operation))
+    {
+      Console.WriteLine("Ungültige Operation.");
+    }
+    return operation;
+  }
+  public static void Operation(double zahl1, double zahl2, char operation)
+  {
+     double result = 0;
+    bool operationFunction = true;
+
+    if (operation == '+')
+    {
+       result = zahl1 + zahl2;
+    }
+    else if (operation == '-')
+    {
+       result = zahl1 - zahl2;
+    }
+    else if (operation == '*')
+    {
+       result = zahl1 * zahl2;
+    }
+    else if (operation == '/')
+    {
+      if (zahl2 != 0)
+      {
+         result = zahl1 / zahl2;
+
+      }
+      else
+      {
+        Console.WriteLine("Fehler: Division durch 0 ist nicht erlaubt.");
+        operationFunction = false;
+      }
+    }
+    else
+    {
+      Console.WriteLine("Ungültige Operation.");
+      operationFunction = false;
+    }
+    if(operationFunction)
+    {
+      Console.WriteLine($"Ergebnis: {result:F2}");
+    }
+    
   }
 }
