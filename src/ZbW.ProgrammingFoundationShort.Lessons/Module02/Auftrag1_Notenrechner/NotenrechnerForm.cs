@@ -1,3 +1,5 @@
+using System.Runtime.Intrinsics.X86;
+
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag1_Notenrechner;
 
 // ============================================================
@@ -24,6 +26,35 @@ public partial class NotenrechnerForm : Form
 
   private void CmdBerechnen_Click(object sender, EventArgs e)
   {
+    if(!int.TryParse(TxtPunkte.Text, out int valuePoints))
+    {
+      MessageBox.Show("Eingabe Ungültig!");
+    }
+    else
+    {
+      if(valuePoints <= 100 && valuePoints >=90)
+      {
+        LblNote.Text = $"Note 6";
+        LblBewertung.Text = $"Sehr Gut";
+      }
+      else if (valuePoints < 90 && valuePoints >= 75)
+      {
+        LblNote.Text = $"Note 5";
+        LblBewertung.Text = $"Gut";
+      }
+      else if (valuePoints < 75 && valuePoints >= 60)
+      {
+        LblNote.Text = $"Note 4";
+        LblBewertung.Text = $"Genügend";
+      }
+      else
+      {
+        LblNote.Text = $"Note 3";
+        LblBewertung.Text = $"Ungenügend";
+      }
+    }
+
+
     // TODO 1: Punkte aus TxtPunkte lesen (int.TryParse)
     //         Bei ungültiger Eingabe: MessageBox anzeigen und return
 
