@@ -18,25 +18,73 @@ public static class StatistikRechner
     // TODO 1: int[5]-Array deklarieren
     //         5 Zahlen einlesen und im Array speichern
 
+    int[] numbers = ReadNumbers();
+
     // TODO 2: Methoden aufrufen und Ergebnis ausgeben
     //         Console.WriteLine($"Min: {Minimum(zahlen)}, Max: {Maximum(zahlen)}, Avg: {Average(zahlen):F2}");
+    int min = Minimum(numbers);
+    int max = Maximum(numbers);
+    double avg = Average(numbers);
+    Output(min, max, avg);
+  }
+  public static int[] ReadNumbers()
+  {
+    int[] readNumbers = new int[5];
+    for(int i = 0; i < 5; i++)
+    {
+      Console.WriteLine("Bitte gib 5 Zahlen ein");
+      readNumbers[i] = Convert.ToInt32(Console.ReadLine() ??"0");
+    }
+    return readNumbers;
+    
   }
 
   public static int Minimum(int[] zahlen)
   {
     // TODO: Kleinste Zahl finden (Schleife, kein LINQ)
-    throw new NotImplementedException("TODO: Minimum implementieren");
+
+    int min = zahlen[0];
+    foreach(int n in zahlen)
+    {
+      if(n < min)
+      {
+        min = n;
+      }
+    }
+    return min;
   }
 
   public static int Maximum(int[] zahlen)
   {
     // TODO: Grösste Zahl finden (Schleife, kein LINQ)
-    throw new NotImplementedException("TODO: Maximum implementieren");
+
+    int max = zahlen[0];
+
+    foreach(int n in zahlen)
+    {
+      if(n > max)
+      {
+        max = n;
+      }
+    }
+    return max;
   }
 
   public static double Average(int[] zahlen)
   {
     // TODO: Durchschnitt berechnen (Summe / Länge)
-    throw new NotImplementedException("TODO: Average implementieren");
+
+    int sum = 0;
+    foreach (int n in zahlen)
+    {
+      sum += n;
+    }
+    double result = (double)sum / zahlen.Length;
+    return result;
+  }
+
+  public static void Output(int min, int max, double avg)
+  {
+    Console.WriteLine($"Min: {min}, Max: {max}, Avg: {avg:F2}");
   }
 }
