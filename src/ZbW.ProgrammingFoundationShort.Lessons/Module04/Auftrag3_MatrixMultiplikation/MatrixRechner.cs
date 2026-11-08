@@ -18,8 +18,19 @@ public static class MatrixRechner
     // TODO 1: Zwei 2×2-Matrizen definieren
     //         int[,] a = { {1, 2}, {3, 4} };
     //         int[,] b = { {5, 6}, {7, 8} };
-
+    int[,] a = { { 1, 2 }, { 3, 4 } };
+    int[,] b = { { 5, 6 }, { 7, 8 } };
     // TODO 2: Multiply aufrufen und Ergebnis ausgeben
+    int[,] result = Multiply(a,b);
+    for(int i = 0; i<2;i++)
+    {
+      for(int j= 0;j<2;j++)
+      {
+        Console.Write($"{result[i,j]}  ");
+      }
+      Console.WriteLine(" ");
+      Console.WriteLine(" ");
+    }
   }
 
   public static int[,] Multiply(int[,] a, int[,] b)
@@ -27,6 +38,20 @@ public static class MatrixRechner
     // TODO: 2×2 Matrix-Multiplikation implementieren
     //       int[,] result = new int[2, 2];
     //       for i in 0..1: for j in 0..1: for k in 0..1: result[i,j] += a[i,k]*b[k,j]
-    throw new NotImplementedException("TODO: Multiply implementieren");
+    int[,] result = new int[2, 2];
+
+    for(int i = 0; i < 2; i++)
+    {
+      for(int j = 0; j < 2; j++)
+      {
+        int sum = 0;
+        for (int k = 0; k < 2; k++)
+        {
+          sum += a[i, k] * b[k, j];
+        }
+        result[i, j] = sum;
+      }
+    }
+    return result;
   }
 }
