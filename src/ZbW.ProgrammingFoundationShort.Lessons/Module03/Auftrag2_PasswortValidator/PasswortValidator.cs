@@ -66,7 +66,7 @@ public static class PasswortValidator
     Console.WriteLine("Dein Passwort entspricht den Anforderungen");
 
     // TODO 5: Nach der Schleife Erfolgsmeldung ausgeben
-    Console.WriteLine("");
+   Console.WriteLine("");
     Console.WriteLine($"Dein Passwort ist: {inPut}");
   }
 }
