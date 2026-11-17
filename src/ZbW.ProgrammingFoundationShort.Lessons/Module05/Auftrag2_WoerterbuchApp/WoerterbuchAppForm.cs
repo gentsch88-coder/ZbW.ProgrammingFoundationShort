@@ -21,13 +21,14 @@ public partial class WoerterbuchAppForm : Form
   {
     InitializeComponent();
     // TODO 2: 5 Wörter vorab einfügen (z.B. Hund → Dog, Katze → Cat...)
-    woerterbuchListe.Add("Bitübertragungschicht", "Physical Layer");
-    woerterbuchListe.Add("Sicherungschicht", "Data Link Layer");
-    woerterbuchListe.Add("Vermittlungschicht", "Network Layer");
-    woerterbuchListe.Add("Transportschicht", "Transport Layer");
-    woerterbuchListe.Add("Sitzungschicht", "Session Layer");
-    woerterbuchListe.Add("Darstellungschicht", "Presentation Layer");
-    woerterbuchListe.Add("Anwendungschicht", "Application Layer");
+    woerterbuchListe.Add("Bitübertragung Schicht", "Physical Layer");
+    woerterbuchListe.Add("Sicherung Schicht", "Data Link Layer");
+    woerterbuchListe.Add("Vermittlung Schicht", "Network Layer");
+    woerterbuchListe.Add("Transport Schicht", "Transport Layer");
+    woerterbuchListe.Add("Sitzung Schicht", "Session Layer");
+    woerterbuchListe.Add("Darstellung Schicht", "Presentation Layer");
+    woerterbuchListe.Add("Anwendung Schicht", "Application Layer");
+    woerterbuchListe.Add("Anwendung schicht", "Application Layer");
 
     // TODO 3: AktualisiereListBox() aufrufen
     AktualisiereListBox();
